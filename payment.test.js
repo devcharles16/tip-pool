@@ -32,7 +32,7 @@ describe("Payments test (with setup and tear-down)", function() {
       expect(curTdList[0].innerText).toEqual('$150');
       expect(curTdList[1].innerText).toEqual('$25');
       expect(curTdList[2].innerText).toEqual('17%');
-      expect(curTdList[3].innerText).toEqual('X');
+  
     });
   
     it('should create a new payment on createCurPayment()', function () {
