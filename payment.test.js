@@ -1,16 +1,16 @@
 describe("Payments test (with setup and tear-down)", function() {
     beforeEach(function () {
-      billAmtInput.value = 100;
-      tipAmtInput.value = 20;
+      billAmtInput.value = 150;
+      tipAmtInput.value = 25;
     });
   
     it('should add a new payment to allPayments on submitPaymentInfo()', function () {
       submitPaymentInfo();
   
       expect(Object.keys(allPayments).length).toEqual(1);
-      expect(allPayments['payment1'].billAmt).toEqual('100');
-      expect(allPayments['payment1'].tipAmt).toEqual('20');
-      expect(allPayments['payment1'].tipPercent).toEqual(20);
+      expect(allPayments['payment1'].billAmt).toEqual('150');
+      expect(allPayments['payment1'].tipAmt).toEqual('25');
+      expect(allPayments['payment1'].tipPercent).toEqual(17);
     });
   
     it('should not add a new payment on submitPaymentInfo() with empty input', function () {
@@ -28,18 +28,18 @@ describe("Payments test (with setup and tear-down)", function() {
   
       let curTdList = document.querySelectorAll('#paymentTable tbody tr td');
   
-      expect(curTdList.length).toEqual(4);
-      expect(curTdList[0].innerText).toEqual('$100');
-      expect(curTdList[1].innerText).toEqual('$20');
-      expect(curTdList[2].innerText).toEqual('%20');
+      expect(curTdList.length).toEqual(3);
+      expect(curTdList[0].innerText).toEqual('$150');
+      expect(curTdList[1].innerText).toEqual('$25');
+      expect(curTdList[2].innerText).toEqual('17%');
       expect(curTdList[3].innerText).toEqual('X');
     });
   
     it('should create a new payment on createCurPayment()', function () {
       let expectedPayment = {
-        billAmt: '100',
-        tipAmt: '20',
-        tipPercent: 20,
+        billAmt: '150',
+        tipAmt: '25',
+        tipPercent: 17,
       }
   
       expect(createCurPayment()).toEqual(expectedPayment);
